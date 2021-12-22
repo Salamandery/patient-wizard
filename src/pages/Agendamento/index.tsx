@@ -1,12 +1,20 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { Form } from '@unform/web';
+import { FormHandles } from '@unform/core';
 import { useMultiStep } from '../../hooks/MultiStepContext';
 import { useToast } from '../../hooks/ToastContext';
 import MultiStepContainer from '../../components/MultiStepContainer';
+import Input from '../../components/Input';
 import {
-    Container
+  FaBook
+} from 'react-icons/fa';
+import {
+    Container,
+    ConvenioFormContainer
 } from './styles';
 
 const Agendamento: React.FC = () => {
+  const formRef = useRef<FormHandles>(null);
   const { step } = useMultiStep();
   const { addToast } = useToast();
   const [stepTitles, setStepTitles] = useState<string[]>([]);
@@ -21,11 +29,57 @@ const Agendamento: React.FC = () => {
     ]);
   }, []);
 
-  const StepForms = useCallback(() => {
+  const StepConvenico = useCallback<React.FC>(() => {
+
+    return (
+      <Form ref={formRef} onSubmit={()=>{}}>
+        <Input
+          placeholder='CONVÊNIO'
+          name="Convênio"
+          icon={FaBook}
+          isBorderMovingLeft={true}
+        />
+        <Input
+          placeholder='CONVÊNIO'
+          name="Convênio"
+          icon={FaBook}
+          isBorderMovingRight={true}
+        />
+        <Input
+          placeholder='CONVÊNIO'
+          name="Convênio"
+          icon={FaBook}
+          isBorderMovingLeft={true}
+          isBorderAnimationPingPong={true}
+        />
+        <Input
+          placeholder='CONVÊNIO'
+          name="Convênio"
+          icon={FaBook}
+          isBorderMovingRight={true}
+          isBorderAnimationPingPong={true}
+        />
+        <Input
+          placeholder='ESPECIALIDADE'
+          name="Especialidade"
+          icon={FaBook}
+        />
+      </Form>
+    );
+  }, [formRef]);
+
+  const StepForms = useCallback<React.FC>(() => {
     switch(step) {
       case 1:
         return (
+          <ConvenioFormContainer>
+             <StepConvenico />
+          </ConvenioFormContainer>
+        )
+      case 2:
+        return (
           <form>
+            <input />
             <input />
           </form>
         )

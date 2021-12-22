@@ -5,7 +5,6 @@ import {
   ButtonContainer,
   Container,
   Button,
-  Title,
   StepFormContainer,
   StepContainer,
   StepWrapper,
@@ -65,7 +64,6 @@ const MultiStepContainer: React.FC<MultiStepData> = ({ stepTitles, handlerSubmit
           }
         </StepContainer>
         <StepFormContainer>
-            <Title>{stepTitles[step-1]}</Title>
             <StepForms />
             <ButtonContainer>
               {
