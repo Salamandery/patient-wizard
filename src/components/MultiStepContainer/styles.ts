@@ -21,6 +21,7 @@ export const StepLine = styled.hr<StepLineProps>`
   top: 1.2em;
   width: 100%;
   height: .1em;
+  transition: background-color 1.5s;
 
   ${props => props.active ? css`
     background: #2F94D2;
@@ -39,7 +40,7 @@ export const StepLabel = styled.div<StepLabelProps>`
   font-weight: bold;
   padding: 10px;
   color: #fff;
-  transition: background-color 0.2s;
+  transition: background-color .9s;
 
   ${props => props.active ? css`
     background: #2F94D2;
@@ -103,18 +104,19 @@ export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: 20px;
 `;
 
 export const Button = styled.button`
-  padding: 8px;
+  padding: 8px 14px;
   border: 0;
-  border-radius: 4px;
+  border-radius: 5px;
   background: #2F94D2;
   color: #fff;
   font-weight: bold;
   font-size: 18px;
   text-transform: uppercase;
-  transition: background-color 0.2s;
+  transition: background-color 0.4s ease;
 
   &:hover {
     background: ${shade(0.2, '#2F94D2')};

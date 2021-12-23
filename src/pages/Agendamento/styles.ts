@@ -9,4 +9,5 @@ export const Container = styled.div`
 
 export const ConvenioFormContainer = styled.div`
   width: 40%;
+  margin: 0 auto;
 `;

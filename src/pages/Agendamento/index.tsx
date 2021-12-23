@@ -38,31 +38,14 @@ const Agendamento: React.FC = () => {
           name="Convênio"
           icon={FaBook}
           isBorderMovingLeft={true}
-        />
-        <Input
-          placeholder='CONVÊNIO'
-          name="Convênio"
-          icon={FaBook}
-          isBorderMovingRight={true}
-        />
-        <Input
-          placeholder='CONVÊNIO'
-          name="Convênio"
-          icon={FaBook}
-          isBorderMovingLeft={true}
-          isBorderAnimationPingPong={true}
-        />
-        <Input
-          placeholder='CONVÊNIO'
-          name="Convênio"
-          icon={FaBook}
-          isBorderMovingRight={true}
           isBorderAnimationPingPong={true}
         />
         <Input
           placeholder='ESPECIALIDADE'
           name="Especialidade"
           icon={FaBook}
+          isBorderMovingLeft={true}
+          isBorderAnimationPingPong={true}
         />
       </Form>
     );

@@ -1,46 +1,97 @@
-# Getting Started with Create React App
+<p align="center">
+  <a href="https://www.atomiccodes.com.br">
+    <img alt="Atomiccodes" src="https://www.atomiccodes.com.br/static/media/logo1.73d0ef38.png" width="300" />
+  </a>
+</p>
+<h1 align="center">
+  ASL Patient Wizard
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🚀 Quick start
 
-## Available Scripts
+1.  **Getting Started with Create React App.**
 
-In the project directory, you can run:
+    This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### `npm start`
+    ```shell
+    npm start
+    ```
+    Runs the app in the development mode.\
+    Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    The page will reload if you make edits.\
+    You will also see any lint errors in the console.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+    ```shell
+    npm test
+    ```
+    Launches the test runner in the interactive watch mode.\
+    See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1.  **Start building.**
 
-### `npm run build`
+    ```shell
+    npm run build
+    ```
+    Builds the app for production to the `build` folder.\
+    It correctly bundles React in production mode and optimizes the build for the best performance.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    The build is minified and the filenames include the hashes.\
+    Your app is ready to be deployed!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🚀 Quick start
 
-### `npm run eject`
+Here's you will can get some files and configuration you'll can set in the project.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 🧐 What's inside?
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+A quick look at the top-level files and directories you'll see in the project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    .
+    ├── node_modules
+    ├── public
+    ├──── favicon.ico
+    ├──── index.html
+    ├──── manifest.json
+    ├──── robots.txt
+    ├── src
+    ├──── components
+    ├──── pages
+    ├──── hooks
+    ├──── index.css
+    ├──── index.tsx
+    ├──── index.tsx
+    ├── .gitignore
+    ├── .eslintignore
+    ├── .eslintrc.json
+    ├── prettier.config.js
+    ├── package.json
+    └── README.md
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
 
-## Learn More
+2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4.  **`prettier.config.js`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
+
+11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+
+12. **`README.md`**: A text file containing useful reference information about your project.
+
+## 🎓 Learning
+
+Looking for more guidance? Full documentation for the project. Here are some places to start:
+
+- **Input** .
+
+- **MultiStep** .
+
+
+
+
+Ass: Rodolfo M F Abreu

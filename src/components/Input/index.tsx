@@ -13,6 +13,7 @@ import { Container, ErrorTooltip } from './styles';
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   icon: React.ComponentType<IconBaseProps>;
+  isBorderAppear?: boolean;
   isBorderMovingLeft?: boolean;
   isBorderMovingRight?: boolean;
   isBorderAnimationPingPong?: boolean;
@@ -21,6 +22,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 const Input: React.FC<InputProps> = (
   { name,
     icon: Icon,
+    isBorderAppear,
     isBorderMovingLeft,
     isBorderMovingRight,
     isBorderAnimationPingPong,
@@ -60,6 +62,7 @@ const Input: React.FC<InputProps> = (
       isErrored={!!error}
       isFilled={isFilled}
       isFocused={isFocused}
+      isBorderAppear={isBorderAppear}
       isBorderMovingLeft={isBorderMovingLeft}
       isBorderMovingRight={isBorderMovingRight}
       isBorderAnimationPingPong={isBorderAnimationPingPong}
