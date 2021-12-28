@@ -9,5 +9,14 @@ export const Container = styled.div`
 
 export const ConvenioFormContainer = styled.div`
   width: 40%;
+  min-height: 200px;
   margin: 0 auto;
+`;
+
+export const ResumoContainer = styled.div`
+  width: 40%;
+  min-height: 200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 `;

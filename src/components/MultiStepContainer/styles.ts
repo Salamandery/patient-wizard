@@ -82,8 +82,8 @@ export const StepContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 100%;
   margin-top: 20px;
+  overflow: hidden;
 `;
 
 export const StepFormContainer = styled.div`
@@ -103,7 +103,7 @@ export const Title = styled.h3`
 export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-top: 20px;
 `;
 

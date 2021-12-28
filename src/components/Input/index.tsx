@@ -6,13 +6,13 @@ import React, {
   InputHTMLAttributes,
 } from 'react';
 import { IconBaseProps } from 'react-icons';
-import { FiAlertCircle } from 'react-icons/fi';
+import { FiAlertCircle, FiArchive } from 'react-icons/fi';
 import { useField } from '@unform/core';
 import { Container, ErrorTooltip } from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
-  icon: React.ComponentType<IconBaseProps>;
+  icon?: React.ComponentType<IconBaseProps>;
   isBorderAppear?: boolean;
   isBorderMovingLeft?: boolean;
   isBorderMovingRight?: boolean;
@@ -21,7 +21,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const Input: React.FC<InputProps> = (
   { name,
-    icon: Icon,
+    icon: Icon = FiArchive,
     isBorderAppear,
     isBorderMovingLeft,
     isBorderMovingRight,
@@ -36,7 +36,7 @@ const Input: React.FC<InputProps> = (
     error,
     fieldName,
     defaultValue,
-    registerField,
+    registerField
   } = useField(name);
 
   useEffect(() => {
