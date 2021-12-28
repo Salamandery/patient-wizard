@@ -20,13 +20,17 @@ import {
   StepLine,
   StepGroup,
 } from './styles';
-
+import { StepDataProps, StepDataRequest } from '../../hooks/MultiStepContext';
 import GetValidationError from '../../utils/getValidationErrors';
 
 interface MultiStepData {
   stepTitles: string[];
   handlerSubmit(): void;
   StepForms: React.FC;
+}
+
+interface ParamDataProps {
+    [key: string]: any
 }
 
 const MultiStepContainer: React.FC<MultiStepData> = ({
@@ -51,31 +55,30 @@ const MultiStepContainer: React.FC<MultiStepData> = ({
     setMultiStepLimit(stepTitles.length);
   }, [stepTitles, setMultiStepLimit]);
 
-  const NextStepForm = useCallback(async(data) =>{
+  const NextStepForm = useCallback(async(data: Object) =>{
     try {
-
       formRef.current?.setErrors({});
+      let fields: ParamDataProps = {};
 
-      if (paramData) {
-        const fields = paramData.map(field =>
-          console.log(field)
-        )
-        console.log(fields)
+      if (paramData.length > 0) {
+        for (var i = 0; i < paramData.length; i++) {
+          const paramErrorName = paramData[i].charAt(0).toUpperCase() + paramData[i].slice(1);
+          fields[paramData[i]] = Yup.string().required(`${paramErrorName} é obrigatório`);
+        }
       }
 
-      const schema = Yup.object().shape({
-        convenio: Yup.string().required('Convênio é obrigatório'),
-        especialidade: Yup.string().required('Especialidade é obrigatório'),
-      });
+      if (fields) {
+        const schema = Yup.object().shape(fields);
 
-      await schema.validate(data, {
-        abortEarly: false,
-      });
+        await schema.validate(data, {
+          abortEarly: false,
+        });
 
-      setStepData({
-        step,
-        data
-      });
+        const stepData: StepDataProps = { step, data };
+        const dataRequest: StepDataRequest = { step: stepData, data }
+
+        setStepData(dataRequest);
+      }
 
       nextStep();
     } catch(err) {
@@ -83,7 +86,6 @@ const MultiStepContainer: React.FC<MultiStepData> = ({
         const errors = GetValidationError(err);
 
         formRef.current?.setErrors(errors);
-        console.log(errors);
       }
       return;
     }
