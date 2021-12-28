@@ -1,27 +1,32 @@
 {
   "compilerOptions": {
+    "outDir": "build",
+    "rootDir": "src",
+    "baseUrl": "src",
+    "paths": {
+      "@pages/*": ["pages/*"],
+      "@assets/*": ["assets/*"],
+      "@components/*": ["components/*"],
+      "@styles/*": ["styles/*"],
+      "@services/*": ["services/*"]
+    },
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "noImplicitReturns": false,
-    "strictNullChecks":false,
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react-jsx"
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
