@@ -79,13 +79,13 @@ const Agendamento: React.FC = () => {
   }, [addToast]);
 
   return (
-      <Container>
-          <MultiStepContainer
-            StepForms={StepForms}
-            stepTitles={stepTitles}
-            handlerSubmit={handleSubmit}
-          />
-      </Container>
+    <Container>
+      <MultiStepContainer
+        StepForms={StepForms}
+        stepTitles={stepTitles}
+        handlerSubmit={handleSubmit}
+      />
+    </Container>
   );
 }
 

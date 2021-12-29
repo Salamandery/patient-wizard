@@ -7,8 +7,8 @@ import {
   FaUser,
   FaLock
 } from 'react-icons/fa';
-import { useMultiStep } from '../../../hooks/MultiStepContext';
 import Input from '../../../components/Input';
+import { useMultiStep, StepDataRequest } from '../../../hooks/MultiStepContext';
 import { ResumoContainer } from './styles';
 
 export interface stepDataContext {
@@ -33,15 +33,15 @@ const StepConvenico: React.FC = () => {
         placeholder='CONVÊNIO'
         name="convenio"
         icon={FaIdCard}
-        isBorderMovingLeft={true}
-        isBorderAnimationPingPong={true}
+        isBorderMovingLeft
+        isBorderAnimationPingPong
       />
       <Input
         placeholder='ESPECIALIDADE'
         name="especialidade"
         icon={FaBook}
-        isBorderMovingLeft={true}
-        isBorderAnimationPingPong={true}
+        isBorderMovingLeft
+        isBorderAnimationPingPong
       />
     </>
   );
@@ -54,15 +54,13 @@ const StepProcedimento: React.FC = () => {
     setParamsData([]);
   }, [setParamsData]);
   return (
-    <>
-      <Input
-        placeholder='PROCEDIMENTO'
-        name="procedimento"
-        icon={FaRegHospital}
-        isBorderMovingLeft={true}
-        isBorderAnimationPingPong={true}
-      />
-    </>
+    <Input
+      placeholder='PROCEDIMENTO'
+      name="procedimento"
+      icon={FaRegHospital}
+      isBorderMovingLeft
+      isBorderAnimationPingPong
+    />
   );
 }
 
@@ -73,16 +71,14 @@ const StepHorario: React.FC = () => {
     setParamsData(['horario']);
   }, [setParamsData]);
   return (
-    <>
-      <Input
-        type="datetime"
-        placeholder='HORÁRIO'
-        name="horario"
-        icon={FaCalendar}
-        isBorderMovingLeft={true}
-        isBorderAnimationPingPong={true}
-      />
-    </>
+    <Input
+      type="datetime"
+      placeholder='HORÁRIO'
+      name="horario"
+      icon={FaCalendar}
+      isBorderMovingLeft
+      isBorderAnimationPingPong
+    />
   );
 }
 
@@ -99,15 +95,15 @@ const StepLogin: React.FC = () => {
         placeholder='USUÁRIO'
         name="usuario"
         icon={FaUser}
-        isBorderMovingLeft={true}
-        isBorderAnimationPingPong={true}
+        isBorderMovingLeft
+        isBorderAnimationPingPong
       />
       <Input
         placeholder='SENHA'
         name="password"
         icon={FaLock}
-        isBorderMovingLeft={true}
-        isBorderAnimationPingPong={true}
+        isBorderMovingLeft
+        isBorderAnimationPingPong
       />
     </>
   );
@@ -123,6 +119,7 @@ const StepResumo: React.FC = () => {
   const [password, setPassword] = useState('');
 
   useEffect(() => {
+    const stepData = getStepData() as StepDataRequest;
     const {
       convenio,
       especialidade,
@@ -130,7 +127,7 @@ const StepResumo: React.FC = () => {
       horario,
       usuario,
       password
-    } = getStepData() as stepDataContext;
+    } = stepData.data as stepDataContext;
 
     setConvenio(convenio);
     setEspecialidade(especialidade);
@@ -138,7 +135,7 @@ const StepResumo: React.FC = () => {
     setHorario(horario);
     setUsuario(usuario);
     setPassword(password);
-  }, [getStepData])
+  }, [getStepData]);
 
   useEffect(() => {
     setParamsData([]);

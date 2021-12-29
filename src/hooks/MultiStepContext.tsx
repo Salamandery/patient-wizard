@@ -1,4 +1,10 @@
-import React, { createContext, useCallback, useContext, useState } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useState,
+  useMemo
+} from 'react';
 
 export interface StepDataRequest {
   step: StepDataProps;
@@ -44,34 +50,46 @@ export const MultiStepProvider: React.FC = ({ children }) => {
       setParamData(data);
     }, []);
 
-    const nextStep = useCallback(() => {
-      setStep(oldStep => oldStep < limit ? oldStep+1 : oldStep);
-    }, [limit]);
-
-    const prevStep = useCallback(() => {
-      setStep(oldStep => oldStep > 1 ? oldStep-1 : oldStep);
-    }, []);
-
     const setCurrentStep = useCallback((step: number) => {
       setStep(step);
     }, []);
+
+    const nextStep = useCallback(() => {
+      setCurrentStep(step < limit ? step+1 : step);
+    }, [limit, step, setCurrentStep]);
+
+    const prevStep = useCallback(() => {
+      setCurrentStep(step > 1 ? step-1 : step);
+    }, [step, setCurrentStep]);
 
     const setMultiStepLimit = useCallback((limit: number) => {
       setLimit(limit);
     }, []);
 
+    const value = useMemo(() => ({
+      nextStep,
+      prevStep,
+      setStepData,
+      getStepData,
+      setParamsData,
+      setMultiStepLimit,
+      setCurrentStep,
+      step,
+      paramData
+    }), [
+      nextStep,
+      prevStep,
+      setStepData,
+      getStepData,
+      setParamsData,
+      setMultiStepLimit,
+      setCurrentStep,
+      step,
+      paramData
+    ]);
+
     return (
-      <MultiStepContext.Provider value={{
-        nextStep,
-        prevStep,
-        setStepData,
-        getStepData,
-        setParamsData,
-        setMultiStepLimit,
-        setCurrentStep,
-        step,
-        paramData
-      }}>
+      <MultiStepContext.Provider value={value}>
         {children}
       </MultiStepContext.Provider>
     );
