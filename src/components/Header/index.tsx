@@ -17,7 +17,8 @@ const Header = () => {
       <LogoWrapper>
         <Logo
           src={logo}
-          alt="logo" />
+          alt="logo"
+        />
       </LogoWrapper>
       <MenuButton>
         <MenuIcon>
