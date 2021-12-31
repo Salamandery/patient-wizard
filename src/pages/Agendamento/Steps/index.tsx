@@ -33,15 +33,15 @@ const StepConvenico: React.FC = () => {
         placeholder='CONVÊNIO'
         name="convenio"
         icon={FaIdCard}
-        isBorderMovingLeft={true}
-        isBorderAnimationPingPong={true}
+        isBorderMovingLeft
+        isBorderAnimationPingPong
       />
       <Input
         placeholder='ESPECIALIDADE'
         name="especialidade"
         icon={FaBook}
-        isBorderMovingLeft={true}
-        isBorderAnimationPingPong={true}
+        isBorderMovingLeft
+        isBorderAnimationPingPong
       />
     </>
   );
@@ -54,15 +54,13 @@ const StepProcedimento: React.FC = () => {
     setParamsData([]);
   }, [setParamsData]);
   return (
-    <>
-      <Input
+    <Input
         placeholder='PROCEDIMENTO'
         name="procedimento"
         icon={FaRegHospital}
-        isBorderMovingLeft={true}
-        isBorderAnimationPingPong={true}
+        isBorderMovingLeft
+        isBorderAnimationPingPong
       />
-    </>
   );
 }
 
@@ -73,16 +71,14 @@ const StepHorario: React.FC = () => {
     setParamsData(['horario']);
   }, [setParamsData]);
   return (
-    <>
-      <Input
+    <Input
         type="datetime"
         placeholder='HORÁRIO'
         name="horario"
         icon={FaCalendar}
-        isBorderMovingLeft={true}
-        isBorderAnimationPingPong={true}
+        isBorderMovingLeft
+        isBorderAnimationPingPong
       />
-    </>
   );
 }
 
@@ -99,15 +95,15 @@ const StepLogin: React.FC = () => {
         placeholder='USUÁRIO'
         name="usuario"
         icon={FaUser}
-        isBorderMovingLeft={true}
-        isBorderAnimationPingPong={true}
+        isBorderMovingLeft
+        isBorderAnimationPingPong
       />
       <Input
         placeholder='SENHA'
         name="password"
         icon={FaLock}
-        isBorderMovingLeft={true}
-        isBorderAnimationPingPong={true}
+        isBorderMovingLeft
+        isBorderAnimationPingPong
       />
     </>
   );

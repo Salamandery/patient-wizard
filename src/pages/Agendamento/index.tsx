@@ -80,11 +80,11 @@ const Agendamento: React.FC = () => {
 
   return (
       <Container>
-          <MultiStepContainer
-            StepForms={StepForms}
-            stepTitles={stepTitles}
-            handlerSubmit={handleSubmit}
-          />
+        <MultiStepContainer
+          StepForms={StepForms}
+          stepTitles={stepTitles}
+          handlerSubmit={handleSubmit}
+        />
       </Container>
   );
 }

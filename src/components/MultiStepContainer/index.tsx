@@ -8,7 +8,6 @@ import * as Yup from 'yup';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import { FaPen } from 'react-icons/fa';
-import { useMultiStep } from '../../hooks/MultiStepContext';
 import {
   ButtonContainer,
   Container,
@@ -20,7 +19,7 @@ import {
   StepLine,
   StepGroup,
 } from './styles';
-import { StepDataProps, StepDataRequest } from '../../hooks/MultiStepContext';
+import { StepDataProps, StepDataRequest, useMultiStep } from '../../hooks/MultiStepContext';
 import GetValidationError from '../../utils/getValidationErrors';
 
 interface MultiStepData {
@@ -58,10 +57,10 @@ const MultiStepContainer: React.FC<MultiStepData> = ({
   const NextStepForm = useCallback(async(data: Object) =>{
     try {
       formRef.current?.setErrors({});
-      let fields: ParamDataProps = {};
+      const fields: ParamDataProps = {};
 
       if (paramData.length > 0) {
-        for (var i = 0; i < paramData.length; i++) {
+        for (let i = 0; i < paramData.length; i++) {
           const paramErrorName = paramData[i].charAt(0).toUpperCase() + paramData[i].slice(1);
           fields[paramData[i]] = Yup.string().required(`${paramErrorName} é obrigatório`);
         }
@@ -87,7 +86,7 @@ const MultiStepContainer: React.FC<MultiStepData> = ({
 
         formRef.current?.setErrors(errors);
       }
-      return;
+
     }
   }, [nextStep, paramData, setStepData, step]);
 
@@ -102,12 +101,12 @@ const MultiStepContainer: React.FC<MultiStepData> = ({
                     null
                   ) : (
                     <StepLine
-                      active={idx+1 <= step ? true : false}
+                      active={idx+1 <= step}
                     />
                   )
                 }
                 <StepGroup>
-                  <StepLabel onClick={e => setCurrentStep(idx+1)} active={idx+1 <= step ? true : false}>
+                  <StepLabel onClick={e => setCurrentStep(idx+1)} active={idx+1 <= step}>
                     {idx+1 < step ? (
                       <FaPen size={16} />
                     ) : idx+1}
@@ -119,7 +118,7 @@ const MultiStepContainer: React.FC<MultiStepData> = ({
                     null
                   ) : (
                     <StepLine
-                      active={idx+1 <= step ? true : false}
+                      active={idx+1 <= step}
                     />
                   )
                 }
@@ -134,7 +133,7 @@ const MultiStepContainer: React.FC<MultiStepData> = ({
                 {
                   step > 1 ? (
                     <Button onClick={e => prevStep()}>Voltar</Button>
-                  ) : <div style={{minWidth: '100px'}}></div>
+                  ) : <div style={{minWidth: '100px'}} />
                 }
                 {
                   step < limit ? (

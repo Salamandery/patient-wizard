@@ -10,14 +10,14 @@ import {
 } from './styles';
 
 import logo from './logo192.png';
+
 const Header = () => {
   return (
     <Container>
       <LogoWrapper>
         <Logo
           src={logo}
-          alt="logo">
-        </Logo>
+          alt="logo" />
       </LogoWrapper>
       <MenuButton>
         <MenuIcon>
