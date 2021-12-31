@@ -11,7 +11,7 @@ import {
 
 import logo from './logo192.png';
 
-const Header = () => {
+const Header: React.FC = () => {
   return (
     <Container>
       <LogoWrapper>

@@ -66,20 +66,16 @@ const MultiStepContainer: React.FC<MultiStepData> = ({
         }
       }
 
-      if (fields) {
-        const schema = Yup.object().shape(fields);
+      const schema = Yup.object().shape(fields);
 
-        await schema.validate(data, {
-          abortEarly: false,
-        });
+      await schema.validate(data, {
+        abortEarly: false,
+      });
 
-        const stepData: StepDataProps = { step, data };
-        const dataRequest: StepDataRequest = { step: stepData, data }
+      const stepData: StepDataProps = { step, data };
+      const dataRequest: StepDataRequest = { step: stepData, data }
 
-        setStepData(dataRequest);
-      }
-
-      nextStep();
+      setStepData(dataRequest);
     } catch(err) {
       if (err instanceof Yup.ValidationError) {
         const errors = GetValidationError(err);
@@ -88,7 +84,11 @@ const MultiStepContainer: React.FC<MultiStepData> = ({
       }
 
     }
-  }, [nextStep, paramData, setStepData, step]);
+  }, [paramData, setStepData, step, nextStep]);
+
+  const handlerPrevStep = useCallback(() => {
+    prevStep();
+  }, [prevStep]);
 
   return (
       <Container>
@@ -132,13 +132,14 @@ const MultiStepContainer: React.FC<MultiStepData> = ({
               <ButtonContainer>
                 {
                   step > 1 ? (
-                    <Button onClick={e => prevStep()}>Voltar</Button>
+                    <Button onClick={e => handlerPrevStep()}>Voltar</Button>
                   ) : <div style={{minWidth: '100px'}} />
                 }
                 {
                   step < limit ? (
                     <Button
                       type='submit'
+
                     >
                         Avançar
                     </Button>

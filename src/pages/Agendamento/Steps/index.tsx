@@ -30,14 +30,14 @@ const StepConvenico: React.FC = () => {
   return (
     <>
       <Input
-        placeholder='CONVÊNIO'
+        placeholder="CONVÊNIO"
         name="convenio"
         icon={FaIdCard}
         isBorderMovingLeft
         isBorderAnimationPingPong
       />
       <Input
-        placeholder='ESPECIALIDADE'
+        placeholder="ESPECIALIDADE"
         name="especialidade"
         icon={FaBook}
         isBorderMovingLeft
@@ -56,12 +56,12 @@ const StepProcedimento: React.FC = () => {
 
   return (
     <Input
-        placeholder='PROCEDIMENTO'
-        name="procedimento"
-        icon={FaRegHospital}
-        isBorderMovingLeft
-        isBorderAnimationPingPong
-      />
+      placeholder='PROCEDIMENTO'
+      name="procedimento"
+      icon={FaRegHospital}
+      isBorderMovingLeft
+      isBorderAnimationPingPong
+    />
   );
 }
 
@@ -112,7 +112,7 @@ const StepLogin: React.FC = () => {
 }
 
 const StepResumo: React.FC = () => {
-  const { setParamsData, getStepData } = useMultiStep();
+  const { getStepData } = useMultiStep();
   const [convenio, setConvenio] = useState('');
   const [especialidade, setEspecialidade] = useState('');
   const [procedimento, setProcedimento] = useState('');
@@ -138,10 +138,6 @@ const StepResumo: React.FC = () => {
     setUsuario(usuario);
     setPassword(password);
   }, [getStepData]);
-
-  useEffect(() => {
-    setParamsData([]);
-  }, [setParamsData]);
 
   return (
     <ResumoContainer>

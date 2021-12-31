@@ -29,7 +29,7 @@ const Agendamento: React.FC = () => {
     ]);
   }, []);
 
-  const StepForms = useCallback<React.FC>(() => {
+  const StepForms = useCallback(() => {
     switch(step) {
       case 1:
         return (

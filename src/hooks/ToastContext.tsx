@@ -5,7 +5,6 @@ import React, {
   useState,
   useMemo
 } from 'react';
-import { uuid } from 'uuidv4';
 import ToastContainer from '../components/ToastContainer';
 
 export interface ToastMessages {
@@ -27,7 +26,7 @@ export const ToastProvider: React.FC = ({ children }) => {
 
   const addToast = useCallback(
     ({ type, title, description }: Omit<ToastMessages, 'id'>) => {
-      const id = uuid();
+      const id = `title.toLowerCase${Math.random}`;
       const toast = {
         id,
         type,
