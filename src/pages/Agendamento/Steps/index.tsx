@@ -7,8 +7,8 @@ import {
   FaUser,
   FaLock
 } from 'react-icons/fa';
-import { useMultiStep } from '../../../hooks/MultiStepContext';
 import Input from '../../../components/Input';
+import { useMultiStep, StepDataRequest } from '../../../hooks/MultiStepContext';
 import { ResumoContainer } from './styles';
 
 export interface stepDataContext {
@@ -53,6 +53,7 @@ const StepProcedimento: React.FC = () => {
   useEffect(() => {
     setParamsData([]);
   }, [setParamsData]);
+
   return (
     <Input
         placeholder='PROCEDIMENTO'
@@ -70,15 +71,16 @@ const StepHorario: React.FC = () => {
   useEffect(() => {
     setParamsData(['horario']);
   }, [setParamsData]);
+
   return (
     <Input
-        type="datetime"
-        placeholder='HORÁRIO'
-        name="horario"
-        icon={FaCalendar}
-        isBorderMovingLeft
-        isBorderAnimationPingPong
-      />
+      type="datetime"
+      placeholder='HORÁRIO'
+      name="horario"
+      icon={FaCalendar}
+      isBorderMovingLeft
+      isBorderAnimationPingPong
+    />
   );
 }
 
@@ -119,6 +121,7 @@ const StepResumo: React.FC = () => {
   const [password, setPassword] = useState('');
 
   useEffect(() => {
+    const stepData = getStepData() as StepDataRequest;
     const {
       convenio,
       especialidade,
@@ -126,7 +129,7 @@ const StepResumo: React.FC = () => {
       horario,
       usuario,
       password
-    } = getStepData() as stepDataContext;
+    } = stepData.data as stepDataContext;
 
     setConvenio(convenio);
     setEspecialidade(especialidade);
@@ -134,7 +137,7 @@ const StepResumo: React.FC = () => {
     setHorario(horario);
     setUsuario(usuario);
     setPassword(password);
-  }, [getStepData])
+  }, [getStepData]);
 
   useEffect(() => {
     setParamsData([]);

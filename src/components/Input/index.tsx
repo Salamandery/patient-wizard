@@ -19,13 +19,14 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   isBorderAnimationPingPong?: boolean;
 }
 
+
 const Input: React.FC<InputProps> = (
   { name,
     icon: Icon = FiArchive,
-    isBorderAppear,
-    isBorderMovingLeft,
-    isBorderMovingRight,
-    isBorderAnimationPingPong,
+    isBorderAppear = false,
+    isBorderMovingLeft = true,
+    isBorderMovingRight = false,
+    isBorderAnimationPingPong = false,
     ...rest
   }
 ) => {
