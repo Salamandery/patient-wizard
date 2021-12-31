@@ -29,7 +29,7 @@ interface MultiStepData {
 }
 
 interface ParamDataProps {
-    [key: string]: any
+    [key: string]: any;
 }
 
 const MultiStepContainer: React.FC<MultiStepData> = ({
@@ -95,7 +95,7 @@ const MultiStepContainer: React.FC<MultiStepData> = ({
         <StepContainer>
           {
             stepTitles.map((title, idx) => (
-              <StepWrapper key={idx}>
+              <StepWrapper key={title+1}>
                 {
                   idx+1 === 1 ? (
                     null

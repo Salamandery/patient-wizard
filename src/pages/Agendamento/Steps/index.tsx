@@ -53,6 +53,7 @@ const StepProcedimento: React.FC = () => {
   useEffect(() => {
     setParamsData([]);
   }, [setParamsData]);
+
   return (
     <Input
       placeholder='PROCEDIMENTO'
@@ -70,6 +71,7 @@ const StepHorario: React.FC = () => {
   useEffect(() => {
     setParamsData(['horario']);
   }, [setParamsData]);
+
   return (
     <Input
       type="datetime"

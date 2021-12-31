@@ -3,13 +3,6 @@
     "outDir": "build",
     "rootDir": "src",
     "baseUrl": "src",
-    "paths": {
-      "@pages/*": ["pages/*"],
-      "@assets/*": ["assets/*"],
-      "@components/*": ["components/*"],
-      "@styles/*": ["styles/*"],
-      "@services/*": ["services/*"]
-    },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
