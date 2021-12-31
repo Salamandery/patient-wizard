@@ -5,11 +5,12 @@ import {
   FaIdCard,
   FaRegHospital,
   FaUser,
-  FaLock
+  FaLock,
+  FaArrowCircleRight
 } from 'react-icons/fa';
 import Input from '../../../components/Input';
-import { useMultiStep, StepDataRequest, StepDataProps } from '../../../hooks/MultiStepContext';
-import { ResumoContainer } from './styles';
+import { useMultiStep, StepDataRequest } from '../../../hooks/MultiStepContext';
+import { DataContainer, ResumoContainer, Container } from './styles';
 
 export interface stepDataContext {
   convenio?: string;
@@ -20,20 +21,32 @@ export interface stepDataContext {
   password?: string;
 }
 
-interface dataRequest {
-  data: stepDataContext;
-  step: StepDataProps;
-}
-
 const StepConvenico: React.FC = () => {
-  const { setParamsData } = useMultiStep();
+  const { setParamsData, nextStep, getStepData } = useMultiStep();
+  const [convenio, setConvenio] = useState('');
+  const [especialidade, setEspecialidade] = useState('');
+
+  useEffect(() => {
+    const stepData = getStepData() as StepDataRequest;
+    const {
+      convenio,
+      especialidade,
+    } = stepData.data as stepDataContext;
+
+    setConvenio(convenio);
+    setEspecialidade(especialidade);
+  }, [getStepData]);
+
+  useEffect(() => {
+    setParamsData(['']);
+  }, [setParamsData]);
 
   useEffect(() => {
     setParamsData(['convenio', 'especialidade']);
   }, [setParamsData]);
 
   return (
-    <>
+    <Container>
       <Input
         placeholder="CONVÊNIO"
         name="convenio"
@@ -48,55 +61,132 @@ const StepConvenico: React.FC = () => {
         isBorderMovingLeft
         isBorderAnimationPingPong
       />
-    </>
+      {
+        (convenio && especialidade) &&
+        (
+          <DataContainer>
+            <p>Resumo</p>
+            <span>Convênio: {convenio}</span>
+            <span>Especialidade: {especialidade}</span>
+            <button type="button" onClick={e => nextStep()}>
+              Continuar
+              <FaArrowCircleRight size={16} />
+            </button>
+          </DataContainer>
+        )
+      }
+    </Container>
   );
 }
 
 const StepProcedimento: React.FC = () => {
-  const { getStepData, setParamsData } = useMultiStep();
+  const { getStepData, setParamsData, nextStep } = useMultiStep();
+  const [procedimento, setProcedimento] = useState('');
+
+  useEffect(() => {
+    const stepData = getStepData() as StepDataRequest;
+    const {
+      procedimento,
+    } = stepData.data as stepDataContext;
+
+    setProcedimento(procedimento);
+  }, [getStepData]);
 
   useEffect(() => {
     setParamsData(['']);
   }, [setParamsData]);
 
   return (
-    <Input
-      placeholder='PROCEDIMENTO'
-      name="procedimento"
-      icon={FaRegHospital}
-      isBorderMovingLeft
-      isBorderAnimationPingPong
-    />
+    <Container>
+      <Input
+        placeholder='PROCEDIMENTO'
+        name="procedimento"
+        icon={FaRegHospital}
+        isBorderMovingLeft
+        isBorderAnimationPingPong
+      />
+      {
+        (procedimento) &&
+        (
+          <DataContainer>
+            <p>Resumo</p>
+            <span>Procedimento: {procedimento}</span>
+            <button type="button" onClick={e => nextStep()}>
+              Continuar
+              <FaArrowCircleRight size={16} />
+            </button>
+          </DataContainer>
+        )
+      }
+    </Container>
   );
 }
 
 const StepHorario: React.FC = () => {
-  const { setParamsData } = useMultiStep();
+  const { setParamsData, nextStep, getStepData } = useMultiStep();
+  const [horario, setHorario] = useState('');
+
+  useEffect(() => {
+    const stepData = getStepData() as StepDataRequest;
+    const {
+      horario,
+    } = stepData.data as stepDataContext;
+
+    setHorario(horario);
+  }, [getStepData]);
 
   useEffect(() => {
     setParamsData(['']);
   }, [setParamsData]);
 
   return (
-    <Input
-      placeholder='HORÁRIO'
-      name="horario"
-      icon={FaCalendar}
-      isBorderMovingLeft
-      isBorderAnimationPingPong
-    />
+    <Container>
+      <Input
+        placeholder='HORÁRIO'
+        name="horario"
+        icon={FaCalendar}
+        isBorderMovingLeft
+        isBorderAnimationPingPong
+      />
+      {
+        (horario) &&
+        (
+          <DataContainer>
+            <p>Resumo</p>
+            <span>Hor&aacute;rio: {horario}</span>
+            <button type="button" onClick={e => nextStep()}>
+              Continuar
+              <FaArrowCircleRight size={16} />
+            </button>
+          </DataContainer>
+        )
+      }
+    </Container>
   );
 }
 
 const StepLogin: React.FC = () => {
-  const { setParamsData } = useMultiStep();
+  const { setParamsData, getStepData, nextStep } = useMultiStep();
+  const [usuario, setUsuario] = useState('');
+  const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    const stepData = getStepData() as StepDataRequest;
+    const {
+      usuario,
+      password
+    } = stepData.data as stepDataContext;
+
+    setUsuario(usuario);
+    setPassword(password);
+  }, [getStepData]);
 
   useEffect(() => {
     setParamsData(['usuario', 'password']);
   }, [setParamsData]);
 
   return (
-    <>
+    <Container>
       <Input
         placeholder='USUÁRIO'
         name="usuario"
@@ -111,7 +201,21 @@ const StepLogin: React.FC = () => {
         isBorderMovingLeft
         isBorderAnimationPingPong
       />
-    </>
+      {
+        (usuario && password) &&
+        (
+          <DataContainer>
+            <p>Resumo</p>
+            <span>Usu&aacute;rio: {usuario}</span>
+            <span>Senha: {password}</span>
+            <button type="button" onClick={e => nextStep()}>
+              Continuar
+              <FaArrowCircleRight size={16} />
+            </button>
+          </DataContainer>
+        )
+      }
+    </Container>
   );
 }
 
