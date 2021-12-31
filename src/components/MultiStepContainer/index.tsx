@@ -45,7 +45,8 @@ const MultiStepContainer: React.FC<MultiStepData> = ({
     setCurrentStep,
     setStepData,
     step,
-    paramData
+    paramData,
+    getStepData
   } = useMultiStep();
   const [limit, setLimit] = useState(0);
 
@@ -57,9 +58,10 @@ const MultiStepContainer: React.FC<MultiStepData> = ({
   const NextStepForm = useCallback(async(data: Object) =>{
     try {
       formRef.current?.setErrors({});
+      const allData = getStepData();
       const fields: ParamDataProps = {};
 
-      if (paramData.length > 0) {
+      if (paramData.length > 0 && paramData[0] !== '') {
         for (let i = 0; i < paramData.length; i++) {
           const paramErrorName = paramData[i].charAt(0).toUpperCase() + paramData[i].slice(1);
           fields[paramData[i]] = Yup.string().required(`${paramErrorName} é obrigatório`);
@@ -76,6 +78,12 @@ const MultiStepContainer: React.FC<MultiStepData> = ({
       const dataRequest: StepDataRequest = { step: stepData, data }
 
       setStepData(dataRequest);
+
+      if (allData.step.step > step) {
+        return;
+      }
+
+      nextStep();
     } catch(err) {
       if (err instanceof Yup.ValidationError) {
         const errors = GetValidationError(err);
@@ -84,7 +92,7 @@ const MultiStepContainer: React.FC<MultiStepData> = ({
       }
 
     }
-  }, [paramData, setStepData, step, nextStep]);
+  }, [paramData, setStepData, step, nextStep, getStepData]);
 
   const handlerPrevStep = useCallback(() => {
     prevStep();
@@ -131,7 +139,7 @@ const MultiStepContainer: React.FC<MultiStepData> = ({
               <StepForms />
               <ButtonContainer>
                 {
-                  step > 1 ? (
+                  (step > 1 && step < limit) ? (
                     <Button onClick={e => handlerPrevStep()}>Voltar</Button>
                   ) : <div style={{minWidth: '100px'}} />
                 }

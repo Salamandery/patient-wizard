@@ -21,7 +21,7 @@ interface MultiStepContextData {
     paramData: string[];
     nextStep(): void;
     prevStep(): void;
-    getStepData(): Object;
+    getStepData(): StepDataRequest;
     setStepData(data: StepDataRequest): void;
     setParamsData(data: string[]): void;
     setMultiStepLimit(limit: number): void;

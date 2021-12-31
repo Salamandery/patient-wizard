@@ -8,16 +8,21 @@ import {
   FaLock
 } from 'react-icons/fa';
 import Input from '../../../components/Input';
-import { useMultiStep, StepDataRequest } from '../../../hooks/MultiStepContext';
+import { useMultiStep, StepDataRequest, StepDataProps } from '../../../hooks/MultiStepContext';
 import { ResumoContainer } from './styles';
 
 export interface stepDataContext {
-  convenio: string;
-  especialidade: string;
-  horario: string;
-  procedimento: string;
-  usuario: string;
-  password: string;
+  convenio?: string;
+  especialidade?: string;
+  horario?: string;
+  procedimento?: string;
+  usuario?: string;
+  password?: string;
+}
+
+interface dataRequest {
+  data: stepDataContext;
+  step: StepDataProps;
 }
 
 const StepConvenico: React.FC = () => {
@@ -48,10 +53,10 @@ const StepConvenico: React.FC = () => {
 }
 
 const StepProcedimento: React.FC = () => {
-  const { setParamsData } = useMultiStep();
+  const { getStepData, setParamsData } = useMultiStep();
 
   useEffect(() => {
-    setParamsData([]);
+    setParamsData(['']);
   }, [setParamsData]);
 
   return (
@@ -69,12 +74,11 @@ const StepHorario: React.FC = () => {
   const { setParamsData } = useMultiStep();
 
   useEffect(() => {
-    setParamsData(['horario']);
+    setParamsData(['']);
   }, [setParamsData]);
 
   return (
     <Input
-      type="datetime"
       placeholder='HORÁRIO'
       name="horario"
       icon={FaCalendar}
@@ -112,13 +116,17 @@ const StepLogin: React.FC = () => {
 }
 
 const StepResumo: React.FC = () => {
-  const { getStepData } = useMultiStep();
+  const { getStepData, setParamsData } = useMultiStep();
   const [convenio, setConvenio] = useState('');
   const [especialidade, setEspecialidade] = useState('');
   const [procedimento, setProcedimento] = useState('');
   const [horario, setHorario] = useState('');
   const [usuario, setUsuario] = useState('');
   const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    setParamsData(['']);
+  }, [setParamsData]);
 
   useEffect(() => {
     const stepData = getStepData() as StepDataRequest;
