@@ -139,7 +139,7 @@ const MultiStepContainer: React.FC<MultiStepData> = ({
               <StepForms />
               <ButtonContainer>
                 {
-                  (step > 1 && step < limit) ? (
+                  (step < 0) ? (
                     <Button onClick={e => handlerPrevStep()}>Voltar</Button>
                   ) : <div style={{minWidth: '100px'}} />
                 }
