@@ -55,7 +55,7 @@ const Input: React.FC<InputProps> = (
   }, [fieldName, registerField]);
 
   useEffect(() => {
-    if (inputRef.current) {
+    if (inputRef.current && currentValue) {
       inputRef.current.value = currentValue;
     }
   }, [currentValue]);
