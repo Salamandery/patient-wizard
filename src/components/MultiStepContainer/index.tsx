@@ -18,6 +18,7 @@ import {
   StepLabel,
   StepLine,
   StepGroup,
+  ComplementContainer
 } from './styles';
 import { StepDataProps, StepDataRequest, useMultiStep } from '../../hooks/MultiStepContext';
 import GetValidationError from '../../utils/getValidationErrors';
@@ -25,7 +26,8 @@ import GetValidationError from '../../utils/getValidationErrors';
 interface MultiStepData {
   stepTitles: string[];
   handlerSubmit(): void;
-  StepForms: React.FC;
+  StepForms: React.ComponentType;
+  StepComplement?: React.ComponentType;
 }
 
 interface ParamDataProps {
@@ -36,6 +38,7 @@ const MultiStepContainer: React.FC<MultiStepData> = ({
   stepTitles,
   handlerSubmit,
   StepForms,
+  StepComplement,
 }) => {
   const formRef = useRef<FormHandles>(null);
   const {
@@ -136,31 +139,38 @@ const MultiStepContainer: React.FC<MultiStepData> = ({
         </StepContainer>
         <StepFormContainer>
           <Form ref={formRef} onSubmit={NextStepForm}>
-              <StepForms />
-              <ButtonContainer>
-                {
-                  (step < 0) ? (
-                    <Button onClick={e => handlerPrevStep()}>Voltar</Button>
-                  ) : <div style={{minWidth: '100px'}} />
-                }
-                {
-                  step < limit ? (
-                    <Button
-                      type='submit'
+            <StepForms />
+            <ButtonContainer>
+              {
+                (step < 0) ? (
+                  <Button onClick={e => handlerPrevStep()}>Voltar</Button>
+                ) : <div style={{minWidth: '100px'}} />
+              }
+              {
+                step < limit ? (
+                  <Button
+                    type='submit'
 
-                    >
-                        Avançar
-                    </Button>
-                  ) : null
-                }
-                {
-                  step === limit ? (
-                    <Button onClick={e => handlerSubmit()}>Confirmar</Button>
-                  ) : null
-                }
-              </ButtonContainer>
+                  >
+                      Avançar
+                  </Button>
+                ) : null
+              }
+              {
+                step === limit ? (
+                  <Button onClick={e => handlerSubmit()}>Confirmar</Button>
+                ) : null
+              }
+            </ButtonContainer>
           </Form>
         </StepFormContainer>
+        {
+          StepComplement && (
+          <ComplementContainer>
+            <StepComplement />
+          </ComplementContainer>
+          )
+        }
       </Container>
   );
 }

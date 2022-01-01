@@ -122,3 +122,7 @@ export const Button = styled.button`
     background: ${shade(0.2, '#2F94D2')};
   }
 `;
+
+export const ComplementContainer = styled.div`
+  border: 0;
+`;

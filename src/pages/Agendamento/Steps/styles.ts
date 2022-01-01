@@ -4,6 +4,7 @@ import { shade } from 'polished';
 export const Container = styled.div``;
 
 export const DataContainer = styled.div`
+  border-radius: 6px;
   position: absolute;
   display: flex;
   flex-direction: column;

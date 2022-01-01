@@ -19,6 +19,7 @@ export interface StepDataProps {
 interface MultiStepContextData {
     step: number;
     paramData: string[];
+    complementInputValue: string;
     nextStep(): void;
     prevStep(): void;
     getStepData(): StepDataRequest;
@@ -26,6 +27,7 @@ interface MultiStepContextData {
     setParamsData(data: string[]): void;
     setMultiStepLimit(limit: number): void;
     setCurrentStep(step: number): void;
+    setCurrentComplementInputValue(value: string): void;
 }
 
 const MultiStepContext = createContext<MultiStepContextData>({} as MultiStepContextData);
@@ -33,6 +35,7 @@ const MultiStepContext = createContext<MultiStepContextData>({} as MultiStepCont
 export const MultiStepProvider: React.FC = ({ children }) => {
     const [step, setStep] = useState<number>(1);
     const [limit, setLimit] = useState<number>(0);
+    const [complementInputValue, setComplementInputValue] = useState('');
     const [stepDataContext, setStepDataContext] = useState<StepDataProps>({} as StepDataProps);
     const [dataContext, setDataContext] = useState<Object>({} as Object);
     const [paramData, setParamData] = useState<string[]>([]);
@@ -66,6 +69,10 @@ export const MultiStepProvider: React.FC = ({ children }) => {
       setLimit(limit);
     }, []);
 
+    const setCurrentComplementInputValue = useCallback((value: string) => {
+      setComplementInputValue(value);
+    }, []);
+
     const value = useMemo(() => ({
       nextStep,
       prevStep,
@@ -75,7 +82,9 @@ export const MultiStepProvider: React.FC = ({ children }) => {
       setMultiStepLimit,
       setCurrentStep,
       step,
-      paramData
+      paramData,
+      setCurrentComplementInputValue,
+      complementInputValue
     }), [
       nextStep,
       prevStep,
@@ -85,7 +94,9 @@ export const MultiStepProvider: React.FC = ({ children }) => {
       setMultiStepLimit,
       setCurrentStep,
       step,
-      paramData
+      paramData,
+      setCurrentComplementInputValue,
+      complementInputValue
     ]);
 
     return (

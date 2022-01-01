@@ -53,6 +53,10 @@ const StepConvenico: React.FC = () => {
         icon={FaIdCard}
         isBorderMovingLeft
         isBorderAnimationPingPong
+        listValue={[
+          'AMIL',
+          'BRADESCO'
+        ]}
       />
       <Input
         placeholder="ESPECIALIDADE"
@@ -60,6 +64,10 @@ const StepConvenico: React.FC = () => {
         icon={FaBook}
         isBorderMovingLeft
         isBorderAnimationPingPong
+        listValue={[
+          'RADIOLOGIA',
+          'CLINICO'
+        ]}
       />
       {
         (convenio && especialidade) &&
@@ -123,7 +131,12 @@ const StepProcedimento: React.FC = () => {
 }
 
 const StepHorario: React.FC = () => {
-  const { setParamsData, nextStep, getStepData } = useMultiStep();
+  const {
+    setParamsData,
+    nextStep,
+    getStepData,
+    complementInputValue
+  } = useMultiStep();
   const [horario, setHorario] = useState('');
 
   useEffect(() => {
@@ -145,6 +158,7 @@ const StepHorario: React.FC = () => {
         placeholder='HORÁRIO'
         name="horario"
         icon={FaCalendar}
+        currentValue={complementInputValue}
         isBorderMovingLeft
         isBorderAnimationPingPong
       />

@@ -1,3 +1,4 @@
+import { shade } from 'polished';
 import styled, { css } from 'styled-components';
 
 import Tooltip from '../Tooltip';
@@ -10,6 +11,8 @@ interface ContainerProps {
   isBorderMovingLeft?: boolean;
   isBorderMovingRight?: boolean;
   isBorderAnimationPingPong?: boolean;
+  isValueCLicked?: boolean;
+  isInputClicked?: boolean;
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -122,6 +125,7 @@ export const Container = styled.div<ContainerProps>`
     border: 0;
     color: #000;
     outline: none;
+    position: relative;
 
     &::placeholder {
         color: #666360;
@@ -153,6 +157,42 @@ export const ErrorTooltip = styled(Tooltip)`
 
     &::before {
       border-color: #c53030 transparent;
+    }
+  }
+`;
+
+export const ListContainer = styled.div<ContainerProps>`
+  z-index: 1;
+  position: absolute;
+  background: #f2f2f2;
+  padding: 5px;
+  width: 98%;
+  border-left: 1px solid;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+  border-color: #333;
+  display: none;
+
+  ${props =>
+    props.isInputClicked && css`display: flex;`
+  }
+
+  ${props =>
+    props.isValueCLicked && css`display: none;`
+  }
+
+  flex-direction: column;
+  top: 52px;
+  left: 0;
+
+  > button {
+    z-index: 0;
+    padding: 5px;
+    border: 0;
+    text-align: left;
+
+    &:hover {
+      background: ${shade(0.05, '#f2f2f2')};
     }
   }
 `;
