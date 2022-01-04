@@ -57,6 +57,7 @@ const StepConvenico: React.FC = () => {
           'AMIL',
           'BRADESCO'
         ]}
+        prevValue={convenio}
       />
       <Input
         placeholder="ESPECIALIDADE"
@@ -68,6 +69,7 @@ const StepConvenico: React.FC = () => {
           'RADIOLOGIA',
           'CLINICO'
         ]}
+        prevValue={especialidade}
       />
       {
         (convenio && especialidade) &&
@@ -112,6 +114,7 @@ const StepProcedimento: React.FC = () => {
         icon={FaRegHospital}
         isBorderMovingLeft
         isBorderAnimationPingPong
+        prevValue={procedimento}
       />
       {
         (procedimento) &&
@@ -161,6 +164,7 @@ const StepHorario: React.FC = () => {
         currentValue={complementInputValue}
         isBorderMovingLeft
         isBorderAnimationPingPong
+        prevValue={horario}
       />
       {
         (horario) &&
@@ -207,10 +211,12 @@ const StepLogin: React.FC = () => {
         icon={FaUser}
         isBorderMovingLeft
         isBorderAnimationPingPong
+        prevValue={usuario}
       />
       <Input
         placeholder='SENHA'
         name="password"
+        type="password"
         icon={FaLock}
         isBorderMovingLeft
         isBorderAnimationPingPong
@@ -221,7 +227,6 @@ const StepLogin: React.FC = () => {
           <DataContainer>
             <p>Resumo</p>
             <span>Usu&aacute;rio: {usuario}</span>
-            <span>Senha: {password}</span>
             <button type="button" onClick={e => nextStep()}>
               Continuar
               <FaArrowCircleRight size={16} />

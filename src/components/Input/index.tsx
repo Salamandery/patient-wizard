@@ -19,6 +19,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   isBorderAnimationPingPong?: boolean;
   listValue?: string[];
   currentValue?: string;
+  prevValue?: string;
 }
 
 
@@ -31,6 +32,7 @@ const Input: React.FC<InputProps> = (
     isBorderMovingRight = false,
     isBorderAnimationPingPong = false,
     currentValue,
+    prevValue,
     ...rest
   }
 ) => {
@@ -59,6 +61,12 @@ const Input: React.FC<InputProps> = (
       inputRef.current.value = currentValue;
     }
   }, [currentValue]);
+
+  useEffect(() => {
+    if (inputRef.current && prevValue) {
+      inputRef.current.value = prevValue;
+    }
+  }, [prevValue]);
 
   const HandleInputFocus = useCallback(() => {
     setIsFocused(true);
