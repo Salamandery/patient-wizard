@@ -26,8 +26,8 @@ import GetValidationError from '../../utils/getValidationErrors';
 interface MultiStepData {
   stepTitles: string[];
   handlerSubmit(): void;
-  StepForms: React.ComponentType;
-  StepComplement?: React.ComponentType;
+  StepForms: React.FC;
+  StepComplement?: React.FC;
 }
 
 interface ParamDataProps {

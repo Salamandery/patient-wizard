@@ -12,7 +12,7 @@ import { Container, ErrorTooltip, ListContainer } from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
-  icon?: React.ComponentType<IconBaseProps>;
+  icon?: React.FC<IconBaseProps>;
   isBorderAppear?: boolean;
   isBorderMovingLeft?: boolean;
   isBorderMovingRight?: boolean;
