@@ -5,7 +5,7 @@
   </a>
 </p>
 <h1 align="center">
-  ASL Patient Wizard
+  Patient Wizard
 </h1>
 
 ## 🚀 Quick start
