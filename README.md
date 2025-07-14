@@ -1,98 +1,127 @@
+<p align="center">
+  <img alt="Atomiccodes" src="https://www.atomiccodes.com.br/static/media/logo1.73d0ef38.png" width="220" />
+</p>
+
+<h1 align="center">Patient Wizard</h1>
 
 <p align="center">
-  <a href="https://www.atomiccodes.com.br">
-    <img alt="Atomiccodes" src="https://www.atomiccodes.com.br/static/media/logo1.73d0ef38.png" width="300" />
-  </a>
+  <a href="#tecnologias"><img src="https://img.shields.io/badge/stack-React%20%7C%20TypeScript-blue" /></a>
+  <a href="#setup"><img src="https://img.shields.io/badge/setup-NPM%20%7C%20Yarn-green" /></a>
+  <a href="#padroes-de-projeto"><img src="https://img.shields.io/badge/patterns-Context%20API%20%7C%20MultiStep-orange" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-lightgrey" /></a>
 </p>
-<h1 align="center">
-  Patient Wizard
-</h1>
 
-## 🚀 Quick start
+---
 
-1.  **Getting Started with Create React App.**
+## 📑 Sumário
+- [Sobre o Projeto](#sobre-o-projeto)
+- [Tecnologias](#tecnologias)
+- [Padrões de Projeto](#padroes-de-projeto)
+- [Estrutura de Pastas](#estrutura-de-pastas)
+- [Setup](#setup)
+- [Scripts Disponíveis](#scripts-disponiveis)
+- [Configurações](#configuracoes)
+- [Contato](#contato)
 
-    This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-    ```shell
-    npm start
-    ```
-    Runs the app in the development mode.\
-    Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 🩺 Sobre o Projeto
 
-    The page will reload if you make edits.\
-    You will also see any lint errors in the console.
+O **Patient Wizard** é uma aplicação React para agendamento de pacientes, utilizando um fluxo multi-etapas (wizard) com validação, feedback visual e integração com API. O projeto é modular, escalável e segue boas práticas de componentização e contexto global.
 
-    ```shell
-    npm test
-    ```
-    Launches the test runner in the interactive watch mode.\
-    See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
+## 🚀 Tecnologias
 
-1.  **Start building.**
+- **React 17**
+- **TypeScript**
+- **@unform/core & @unform/web** — Formulários desacoplados
+- **Yup** — Validação de dados
+- **Styled-components** — CSS-in-JS
+- **React Router DOM v6** — Rotas SPA
+- **Axios** — Consumo de API
+- **React Icons** — Ícones SVG
+- **Polished** — Utilitários de CSS
+- **React Spring** — Animações
+- **ESLint + Prettier** — Padrão de código
 
-    ```shell
-    npm run build
-    ```
-    Builds the app for production to the `build` folder.\
-    It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-    The build is minified and the filenames include the hashes.\
-    Your app is ready to be deployed!
+## 🏗️ Padrões de Projeto
 
-    See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Context API**: Gerenciamento global de estado (MultiStep, Toast)
+- **Componentização**: Separação clara entre componentes, páginas, hooks e utilitários
+- **MultiStep Pattern**: Wizard de múltiplos passos com navegação dinâmica
+- **Validação Centralizada**: Yup + utilitário de erros
+- **Serviços de API**: Axios centralizado em `src/services/api.ts`
 
-## 🚀 Quick start
+---
 
-Here's you will can get some files and configuration you'll can set in the project.
+## 📁 Estrutura de Pastas
 
-## 🧐 What's inside?
+```
+├── public/
+├── src/
+│   ├── @types/           # Tipagens globais
+│   ├── components/       # Componentes reutilizáveis (Input, MultiStepContainer, Toast, etc)
+│   ├── hooks/            # Contextos customizados (MultiStep, Toast)
+│   ├── pages/            # Páginas (ex: Agendamento)
+│   ├── services/         # Integração com APIs
+│   ├── utils/            # Funções utilitárias (ex: getValidationErrors)
+│   ├── index.tsx         # Entry point
+│   └── index.css         # Estilos globais
+├── package.json
+├── tsconfig.json
+├── .eslintrc / .eslintignore
+├── prettier.config.js
+└── README.md
+```
 
-A quick look at the top-level files and directories you'll see in the project.
+---
 
-    .
-    ├── node_modules
-    ├── public
-    ├──── favicon.ico
-    ├──── index.html
-    ├──── manifest.json
-    ├──── robots.txt
-    ├── src
-    ├──── components
-    ├──── pages
-    ├──── hooks
-    ├──── index.css
-    ├──── index.tsx
-    ├──── index.tsx
-    ├── .gitignore
-    ├── .eslintignore
-    ├── .eslintrc.json
-    ├── prettier.config.js
-    ├── package.json
-    └── README.md
+## ⚙️ Setup
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+1. **Clone o repositório:**
+   ```bash
+   git clone <repo-url>
+   cd patient-wizard
+   ```
+2. **Instale as dependências:**
+   ```bash
+   npm install
+   # ou
+   yarn
+   ```
+3. **Inicie o projeto:**
+   ```bash
+   npm start
+   # ou
+   yarn start
+   ```
+   Acesse: [http://localhost:3000](http://localhost:3000)
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+---
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+## 📜 Scripts Disponíveis
 
-4.  **`prettier.config.js`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
+- `npm start` — Inicia o servidor de desenvolvimento
+- `npm run build` — Gera build de produção em `/build`
+- `npm test` — Executa testes
+- `npm run lint` — (Se configurado) Lint do código
 
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+---
 
-12. **`README.md`**: A text file containing useful reference information about your project.
+## 🛠️ Configurações
 
-## 🎓 Learning
+- **TypeScript**: Configurado em `tsconfig.json` (rootDir: src, strict, JSX: react-jsx)
+- **ESLint/Prettier**: Padrão Airbnb + Prettier para qualidade e formatação
+- **Browserslist**: Compatibilidade ampla (configurado no package.json)
 
-Looking for more guidance? Full documentation for the project. Here are some places to start:
+---
 
-- **Input** .
+## 👤 Autor
+by **Rodolfo M. F. Abreu**
 
-- **MultiStep** .
+---
 
-
-
-
-Ass: Rodolfo M F Abreu
+<p align="center">Feito com 💙 por Atomiccodes</p>
